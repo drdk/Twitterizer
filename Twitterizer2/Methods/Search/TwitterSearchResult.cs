@@ -68,11 +68,16 @@ namespace Twitterizer
         /// <summary>
         /// Gets or sets the twitter user.
         /// </summary>
-        /// <value>The name of from user screen.</value>
+        /// <value>User object.</value>
         [DataMember, JsonProperty(PropertyName = "user")]
         public TwitterUser User { get; set; }
 
-
+        ///// <summary>
+        ///// Gets or sets the hashtags.
+        ///// </summary>
+        ///// <value>The hashtags.</value>
+        //[DataMember, JsonProperty(PropertyName = "hashtags")]
+        //public TwitterHashtags Hashtags { get; set; }
 
 
         /// <summary>

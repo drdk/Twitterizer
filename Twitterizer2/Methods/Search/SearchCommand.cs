@@ -63,6 +63,8 @@ namespace Twitterizer.Commands
 
         //    this.DeserializationHandler = TwitterSearchResultCollection.Deserialize;
         //}
+
+
         public SearchCommand(OAuthTokens requestTokens, string query, SearchOptions options)
             : base(HTTPVerb.GET, "tweets.json", requestTokens, options)
         {
@@ -75,6 +77,7 @@ namespace Twitterizer.Commands
 
             this.DeserializationHandler = TwitterSearchResultCollection.Deserialize;
         }
+
         #endregion
 
         /// <summary>
