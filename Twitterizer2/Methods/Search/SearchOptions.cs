@@ -74,7 +74,8 @@ namespace Twitterizer
         /// </summary>
         public SearchOptions()
         {
-            this.APIBaseAddress = "http://search.twitter.com/";
+            //this.APIBaseAddress = "http://search.twitter.com/";
+            this.APIBaseAddress = "https://api.twitter.com/1.1/search/";
         }
 
         /// <summary>

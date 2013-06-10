@@ -49,74 +49,19 @@ namespace Twitterizer
     public class TwitterSearchResultCollection : Core.TwitterCollection<TwitterSearchResult>, ITwitterObject
     {
         /// <summary>
-        /// Gets or sets the completed_in.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
-        public double CompletedIn { get; internal set; }
-
-        /// <summary>
-        /// Gets or sets the max_id.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
-        public long MaxId { get; internal set; }
-
-        /// <summary>
-        /// Gets or sets the max_id as a string.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
-        public string MaxIdStr { get; internal set; }
-
-        /// <summary>
-        /// Gets or sets the next_page.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
-        public string NextPage { get; internal set; }
-
-        /// <summary>
-        /// Gets or sets the page.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
-        public int Page { get; internal set; }
-
-        /// <summary>
-        /// Gets or sets the query.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
-        public string Query { get; internal set; }
-
-        /// <summary>
-        /// Gets or sets the refresh URL.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
-        public string RefreshUrl { get; internal set; }
-        
-        /// <summary>
         /// Deserializes the specified value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
         internal static TwitterSearchResultCollection Deserialize(JObject value)
         {
-            if (value == null || value["results"] == null)
+            if (value == null || value["statuses"] == null)
                 return null;
 
-            TwitterSearchResultCollection result = JsonConvert.DeserializeObject<TwitterSearchResultCollection>(value["results"].ToString());
-            result.CompletedIn = value.SelectToken("completed_in").Value<double>();
-            result.MaxId = value.SelectToken("max_id").Value<long>();
-            result.MaxIdStr = value.SelectToken("max_id_str").Value<string>();
-            result.NextPage = value.SelectToken("next_page").Value<string>();
-            result.Page = value.SelectToken("page").Value<int>();
-            result.Query = value.SelectToken("query").Value<string>();
-            result.RefreshUrl = value.SelectToken("refresh_url").Value<string>();
+            //if (value == null || value["results"] == null)
+             //   return null;
 
-            return result;
+            return JsonConvert.DeserializeObject<TwitterSearchResultCollection>(value["statuses"].ToString());
         }
     }
 }

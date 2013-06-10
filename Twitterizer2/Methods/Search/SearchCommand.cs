@@ -51,8 +51,20 @@ namespace Twitterizer.Commands
         /// <param name="requestTokens">The request tokens.</param>
         /// <param name="query">The query.</param>
         /// <param name="options">The options.</param>
+        //public SearchCommand(OAuthTokens requestTokens, string query, SearchOptions options)
+        //    : base(HTTPVerb.GET, "search.json", requestTokens, options)
+        //{
+        //    if (string.IsNullOrEmpty(query))
+        //    {
+        //        throw new ArgumentNullException("query");
+        //    }
+
+        //    this.Query = query;
+
+        //    this.DeserializationHandler = TwitterSearchResultCollection.Deserialize;
+        //}
         public SearchCommand(OAuthTokens requestTokens, string query, SearchOptions options)
-            : base(HTTPVerb.GET, "search.json", requestTokens, options)
+            : base(HTTPVerb.GET, "tweets.json", requestTokens, options)
         {
             if (string.IsNullOrEmpty(query))
             {
@@ -108,13 +120,15 @@ namespace Twitterizer.Commands
 
             if (options.NumberPerPage > 0)
             {
-                this.RequestParameters.Add("rpp", options.NumberPerPage.ToString(unitedStatesEnglishCulture));
+                //rpp changed to count in v1.1
+                this.RequestParameters.Add("count", options.NumberPerPage.ToString(unitedStatesEnglishCulture));
             }
 
-            if (options.PageNumber > 0)
-            {
-                this.RequestParameters.Add("page", options.PageNumber.ToString(unitedStatesEnglishCulture));
-            }
+            //DEPRICATED IN v1.1
+            //if (options.PageNumber > 0)
+            //{
+            //    this.RequestParameters.Add("page", options.PageNumber.ToString(unitedStatesEnglishCulture));
+            //}
 
             if (options.SinceDate > new DateTime())
             {
