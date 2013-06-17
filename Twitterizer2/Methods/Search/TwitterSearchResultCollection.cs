@@ -55,10 +55,13 @@ namespace Twitterizer
         /// <returns></returns>
         internal static TwitterSearchResultCollection Deserialize(JObject value)
         {
-            if (value == null || value["results"] == null)
+            if (value == null || value["statuses"] == null)
                 return null;
 
-            return JsonConvert.DeserializeObject<TwitterSearchResultCollection>(value["results"].ToString());
+            //if (value == null || value["results"] == null)
+             //   return null;
+
+            return JsonConvert.DeserializeObject<TwitterSearchResultCollection>(value["statuses"].ToString());
         }
     }
 }
