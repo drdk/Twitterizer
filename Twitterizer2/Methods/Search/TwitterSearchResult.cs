@@ -44,9 +44,11 @@ namespace Twitterizer
 #if !SILVERLIGHT
     [Serializable]
 #endif
+
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     public class TwitterSearchResult : Core.TwitterObject
     {
+
         /// <summary>
         /// Gets or sets the profile image URL.
         /// </summary>
@@ -59,7 +61,24 @@ namespace Twitterizer
         /// </summary>
         /// <value>The created date.</value>
         [JsonProperty(PropertyName = "created_at")]
+        [JsonConverter(typeof(TwitterizerDateConverter))]
         public DateTime CreatedDate { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the twitter user.
+        /// </summary>
+        /// <value>User object.</value>
+        [DataMember, JsonProperty(PropertyName = "user")]
+        public TwitterUser User { get; set; }
+
+        ///// <summary>
+        ///// Gets or sets the hashtags.
+        ///// </summary>
+        ///// <value>The hashtags.</value>
+        //[DataMember, JsonProperty(PropertyName = "hashtags")]
+        //public TwitterHashtags Hashtags { get; set; }
+
 
         /// <summary>
         /// Gets or sets the display name of the from user.
